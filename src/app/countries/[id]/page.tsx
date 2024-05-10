@@ -29,7 +29,7 @@ const CountryDetails = ({
 
 	console.log(countryData);
 
-	const flagUrl = countryData.flags.png;
+	const flagUrl = countryData.flags?.png;
 
 	return (
 		<div
@@ -56,30 +56,29 @@ const CountryDetails = ({
 						alt=""
 						style={{
 							width: "600px",
+							height: "400px",
 						}}
 					/>
 				</div>
 				<div className="flex flex-col justify-center">
 					<h1 className="text-lg font-extrabold text-24">
-						{countryData.altSpellings}
+						{countryData?.altSpellings}
 					</h1>
-					<p className="text-14">Native Name: {} </p>
+					<p className="text-14">Native Name: {countryData?.altSpellings} </p>
 					<div className="flex gap-10">
 						<div>
-							<p className="text-14">Population: 11,319,511</p>
-							<p className="text-14">Region: Europe</p>
-							<p className="text-14">Sub Region: Western Europe</p>
+							<p className="text-14">Population: {countryData?.population}</p>
+							<p className="text-14">Region: {countryData?.region}</p>
+							<p className="text-14">Sub Region: {countryData?.subregion}</p>
 						</div>
 						<div>
-							<p className="text-14">Top Level Domain: .be</p>
-							<p className="text-14">Currencies: Euro</p>
-							<p className="text-14">Languages: Dutch, French, German</p>
+							{/* <p className="text-14">Top Level Domain: {countryData?.tId}</p>
+							<p className="text-14">Currencies: {countryData?.currencies}</p>
+							<p className="text-14">Languages: {countryData?.languages}</p> */}
 						</div>
 					</div>
-					<p className="text-14">Capital: Brussels Belgium</p>
-					<p className="text-14">
-						Border Countries: France Germany Netherlands
-					</p>
+					<p className="text-14">Capital: {countryData?.capital}</p>
+					<p className="text-14">Border Countries: {countryData?.borders}</p>
 				</div>
 			</div>
 		</div>

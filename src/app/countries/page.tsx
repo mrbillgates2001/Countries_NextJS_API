@@ -22,7 +22,7 @@ const Countries = () => {
 		fetchData();
 	}, []);
 
-	console.log(search);
+	console.log(data);
 
 	return (
 		<div
@@ -59,38 +59,29 @@ const Countries = () => {
 			</div>
 
 			<div className="items-center justify-between py-5 flex-wrap gap-5 flex">
-				{data
-					.filter(
-						(country) =>
-							country.altSpellings[2] ||
-							country.altSpellings[1] ||
-							country.altSpellings[0]
-								.toLowerCase()
-								.includes(search.toLowerCase())
-					)
-					.map((country, i) => (
-						<Link href={`/countries/${country.id}`} key={i}>
-							<Card
-								key={i}
-								className="w-cardWidth h-cardHeight bg-orange-100 dark:bg-navBackground dark:text-white hover:shadow-2xl hover:transition-shadow hover:shadow-gray-950 cursor-pointer ">
-								<img
-									src={country.flags.png}
-									alt={country.flags.alt}
-									style={{ width: "267px", height: "160px" }}
-								/>
-								<h5 className="text-18 font-bold tracking-tight text-gray-900 dark:text-white">
-									{country.altSpellings[2] ||
-										country.altSpellings[1] ||
-										country.altSpellings[0]}
-								</h5>
-								<p className="text-gray-700 text-14 dark:text-gray-400">
-									<strong>Population:</strong> {country.population} <br />
-									<strong>Region:</strong> {country.region} <br />
-									<strong>Capital:</strong> {country.capital}
-								</p>
-							</Card>
-						</Link>
-					))}
+				{data.map((country, i) => (
+					<Link href={`/countries/${country.id}`} key={i}>
+						<Card
+							key={i}
+							className="w-cardWidth h-cardHeight bg-orange-100 dark:bg-navBackground dark:text-white hover:shadow-2xl hover:transition-shadow hover:shadow-gray-950 cursor-pointer ">
+							<img
+								src={country.flags.png}
+								alt={country.flags.alt}
+								style={{ width: "267px", height: "160px" }}
+							/>
+							<h5 className="text-18 font-bold tracking-tight text-gray-900 dark:text-white">
+								{country.altSpellings[2] ||
+									country.altSpellings[1] ||
+									country.altSpellings[0]}
+							</h5>
+							<p className="text-gray-700 text-14 dark:text-gray-400">
+								<strong>Population:</strong> {country.population} <br />
+								<strong>Region:</strong> {country.region} <br />
+								<strong>Capital:</strong> {country.capital}
+							</p>
+						</Card>
+					</Link>
+				))}
 			</div>
 		</div>
 	);
