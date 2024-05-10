@@ -17,4 +17,10 @@ span:active {
 			font-size: 16px;
 		}
 	}
+
+	.data {
+		img {
+			height: 200px !important;
+		}
+	}
 }
